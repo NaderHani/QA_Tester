@@ -21,11 +21,14 @@ jobs:
         with:
           node-version: 20
           
-      - name: Install and Build
-        run: |
-          npm install
-          npm run build
-          touch dist/.nojekyll
+      - name: Install dependencies
+        run: npm install
+          
+      - name: Build with Vite
+        run: npx vite build
+          
+      - name: Add .nojekyll
+        run: touch dist/.nojekyll
           
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
