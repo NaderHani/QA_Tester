@@ -165,10 +165,12 @@ const About = () => {
               <div className="absolute -inset-1 bg-gradient-to-r from-neon-green via-neon-purple to-neon-red rounded-2xl blur-lg opacity-50 group-hover:opacity-100 transition duration-1000"></div>
               <div className="relative overflow-hidden rounded-2xl shadow-2xl transform transition-all duration-700 hover:scale-[1.02]">
                 <img
-                  src="/profile-image.jpg"
+                  src="profile-image.jpg"
                   alt="Nader Hani Ali - Software Tester & QA"
                   className="w-full h-auto aspect-square object-cover transition-all duration-700 group-hover:brightness-110"
+                  loading="lazy"
                   onError={(e) => {
+                    console.error("Failed to load profile image");
                     e.target.style.display = "none";
                     e.target.nextElementSibling.style.display = "flex";
                   }}
