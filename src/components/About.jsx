@@ -134,7 +134,15 @@ const About = () => {
               <div
                 className={`absolute inset-0 bg-gradient-to-br ${stat.bgGradient} rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-500 opacity-50 group-hover:opacity-100`}
               ></div>
-              <div className="relative card-dark rounded-2xl p-6 text-center transform transition-all duration-500 hover:scale-105 hover:-translate-y-2 border border-gray-700/50 hover:border-${stat.color}/50">
+              <div
+                className={`relative card-dark rounded-2xl p-6 text-center transform transition-all duration-500 hover:scale-105 hover:-translate-y-2 border border-gray-700/50 ${
+                  stat.color === "text-neon-green"
+                    ? "hover:border-neon-green/50"
+                    : stat.color === "text-neon-purple"
+                    ? "hover:border-neon-purple/50"
+                    : "hover:border-neon-red/50"
+                }`}
+              >
                 <i
                   className={`${stat.icon} text-4xl ${stat.color} ${stat.glow} mb-3 block transform group-hover:scale-110 transition-transform duration-300`}
                 ></i>
@@ -276,27 +284,53 @@ const About = () => {
                   style={{ animationDelay: `${index * 0.1}s` }}
                 >
                   <div
-                    className={`absolute inset-0 bg-${item.color}/10 rounded-xl blur-xl group-hover:blur-2xl transition-all duration-500 opacity-0 group-hover:opacity-100`}
+                    className={`absolute inset-0 rounded-xl blur-xl group-hover:blur-2xl transition-all duration-500 opacity-0 group-hover:opacity-100 ${
+                      item.color === "neon-green"
+                        ? "bg-neon-green/10"
+                        : item.color === "neon-purple"
+                        ? "bg-neon-purple/10"
+                        : "bg-neon-red/10"
+                    }`}
                   ></div>
-                  <div className="relative card-dark rounded-xl p-6 border border-gray-700/50 hover:border-${item.color}/50 transition-all duration-300 hover:transform hover:scale-[1.02]">
+                  <div
+                    className={`relative card-dark rounded-xl p-6 border border-gray-700/50 transition-all duration-300 hover:transform hover:scale-[1.02] ${
+                      item.color === "neon-green"
+                        ? "hover:border-neon-green/50"
+                        : item.color === "neon-purple"
+                        ? "hover:border-neon-purple/50"
+                        : "hover:border-neon-red/50"
+                    }`}
+                  >
                     <div className="flex items-start gap-4 mb-4">
                       <div
-                        className={`bg-${item.color}/10 p-3 rounded-lg group-hover:scale-110 transition-transform duration-300`}
+                        className={`p-3 rounded-lg group-hover:scale-110 transition-transform duration-300 ${
+                          item.color === "neon-green"
+                            ? "bg-neon-green/10"
+                            : item.color === "neon-purple"
+                            ? "bg-neon-purple/10"
+                            : "bg-neon-red/10"
+                        }`}
                       >
                         <i
-                          className={`${item.icon} text-2xl text-${
-                            item.color
-                          } ${
+                          className={`${item.icon} text-2xl ${
                             item.color === "neon-green"
-                              ? "glow-text"
+                              ? "text-neon-green glow-text"
                               : item.color === "neon-purple"
-                              ? "glow-purple"
-                              : "glow-red"
+                              ? "text-neon-purple glow-purple"
+                              : "text-neon-red glow-red"
                           }`}
                         ></i>
                       </div>
                       <div className="flex-1">
-                        <h4 className="text-white font-bold text-lg mb-2 group-hover:text-${item.color} transition-colors duration-300">
+                        <h4
+                          className={`text-white font-bold text-lg mb-2 transition-colors duration-300 ${
+                            item.color === "neon-green"
+                              ? "group-hover:text-neon-green"
+                              : item.color === "neon-purple"
+                              ? "group-hover:text-neon-purple"
+                              : "group-hover:text-neon-red"
+                          }`}
+                        >
                           {item.title}
                         </h4>
                         <p className="text-gray-400 text-sm leading-relaxed">
@@ -308,7 +342,13 @@ const About = () => {
                       {item.tags.map((tag, tagIndex) => (
                         <span
                           key={tagIndex}
-                          className={`px-3 py-1 bg-${item.color}/10 text-${item.color} text-xs rounded-full border border-${item.color}/30 hover:bg-${item.color}/20 transition-all duration-300 cursor-default`}
+                          className={`px-3 py-1 text-xs rounded-full transition-all duration-300 cursor-default ${
+                            item.color === "neon-green"
+                              ? "bg-neon-green/10 text-neon-green border border-neon-green/30 hover:bg-neon-green/20"
+                              : item.color === "neon-purple"
+                              ? "bg-neon-purple/10 text-neon-purple border border-neon-purple/30 hover:bg-neon-purple/20"
+                              : "bg-neon-red/10 text-neon-red border border-neon-red/30 hover:bg-neon-red/20"
+                          }`}
                         >
                           {tag}
                         </span>
